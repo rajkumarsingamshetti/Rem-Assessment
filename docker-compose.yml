@@ -1,0 +1,44 @@
+version: '3.8'
+# Docker Compose configuration for Playwright test automation with a mock API service
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    ports:
+      - "3000:3000" # Expose API on port 3000
+    networks:
+      - app-network
+
+  playwright:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: playwright-automation
+    working_dir: /app
+    volumes:
+      # Mount project directory for live test access
+      - .:/app
+      # Persist test results and reports
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    # Set environment variables for Playwright tests  
+    environment:
+      - CI=true
+      - PLAYWRIGHT_HEADLESS=true
+      - API_URL=http://api:3000
+    # Run Playwright tests with a command that can be easily overridden for debugging  
+    command: npx playwright test
+    # Connect to the same network as the API service  
+    networks:
+      - app-network
+    # Ensure the API service is started before running Playwright tests  
+    depends_on:
+      - api
+    # Uncomment to keep container running for debugging
+    # stdin_open: true
+    # tty: true
+
+networks:
+  app-network:
+    driver: bridge
