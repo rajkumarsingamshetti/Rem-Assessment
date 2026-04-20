@@ -29,6 +29,26 @@ module.exports = defineConfig({
     name: 'mobile',
     use: { ...devices['iPhone 13'] }, // use this line to test on iPhone 13
     //use: { ...devices['Pixel 5'] }, // Use Pixel 5 for mobile testing
-  }
-  ]
+  },
+  
+  // - API tests using the mock server
+   {
+      name: 'api',
+      testMatch: /.*api\.spec\.js/,
+      use: {
+        baseURL: 'http://localhost:3000',
+      },
+    }
+  ],
+
+  //AUTO START MOCK SERVER
+  webServer: {
+    command: 'node api/mock-server.js',
+    port: 3000,
+    reuseExistingServer: true,
+  },
+  
+  
+
+  
 });

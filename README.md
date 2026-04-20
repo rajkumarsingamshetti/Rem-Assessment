@@ -514,7 +514,7 @@ For detailed manual test cases, refer to:
 
 | Property | Value |
 |----------|-------|
-| Name | REM (Skip Hire QA Framework) |
+| Name | REM-ASSESSMENT (Skip Hire QA Framework) |
 | Version | 1.0.0 |
 | Type | QA Automation Framework |
 | Testing Library | Playwright v1.59+ |
