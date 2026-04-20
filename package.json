@@ -1,6 +1,7 @@
 {
   "name": "rem",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "This project implements a complete QA assessment framework for a skip hire booking flow, including: - Mock API backend with deterministic fixtures - End-to-end automation tests with Playwright - Manual test cases and bug reports - Docker containerization for easy deployment",
   "main": "index.js",
   "scripts": {
@@ -13,7 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
     "@types/node": "^25.6.0",
@@ -22,6 +22,9 @@
   },
   "dependencies": {
     "dotenv": "^17.4.2",
-    "express": "^4.18.2"
+    "express": "^4.22.1"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
