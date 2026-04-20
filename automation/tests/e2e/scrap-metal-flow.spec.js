@@ -4,27 +4,27 @@ const date = '10';
 
 test('E2E - Scrap Metal Skip Hire Flow', async ({ page }) => {
 
-  // 🔹 Open homepage
+  //  Open homepage
   await page.goto('/');
 
-  // 🔹 Validate phone number is visible
+  //  Validate phone number is visible
   await expect(
     page.locator('//span[contains(@class,"call-us")]')
   ).toContainText('0800 808 5475');
 
-  // 🔹 Click "Get a Quote Online"
+  // Click "Get a Quote Online"
   await expect(page.locator('a.btn-danger').first()).toBeVisible();
   await page.locator('a.btn-danger').first().click();
 
-  // 🔹 Validate navigation to selection page
+  // Validate navigation to selection page
   await expect(
     page.getByText(/please choose your type of skip hire/i)
   ).toBeVisible();
 
-  // 🔹 Select Commercial Skip Hire
+  // Select Commercial Skip Hire
   await page.getByRole('link', { name: /commercial skip hire/i }).click();
 
-  // 🔹 Verify Step 1 page loaded
+  // Verify Step 1 page loaded
   await expect(
     page.getByRole('heading', { name: 'SKIP HIRE ONLINE QUOTATION FORM' })
   ).toBeVisible();
